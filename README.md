@@ -7,12 +7,12 @@ docker build . -t vgldocker
 
 ## Start X server in a privileged container
 ```
-nvidia-docker run --privileged --rm -ti -v /tmp/.X11-unix:/tmp/.X11-unix nvcr.io/nvidian_sas/vgldesktop /startx.sh
+nvidia-docker run --privileged --rm -ti -v /tmp/.X11-unix:/tmp/.X11-unix vgldesktop /startx.sh
 ```
 
 ## Start VNC server in a non-privileged container
 ```
-nvidia-docker run -ti --rm -p 5901:5901 -u $(id -u):$(id -g) -e USER=$USER -e HOME=$HOME -v $HOME:$HOME -v /tmp/.X11-unix/X0:/tmp/.X11-unix/X0 nvcr.io/nvidian_sas/vgldesktop /startvnc.sh
+nvidia-docker run -ti --rm -p 5901:5901 -u $(id -u):$(id -g) -e USER=$USER -e HOME=$HOME -v $HOME:$HOME -v /tmp/.X11-unix/X0:/tmp/.X11-unix/X0 vgldesktop /startvnc.sh
 ```
 
 The container will output the one time password for the VNC session.
